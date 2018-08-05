@@ -10,8 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron": "^2.0.6",
-    "fluent-ffmpeg": "^2.1.2"
+    "electron": "^2.0.6"
   },
   "devDependencies": {
     "eslint": "^5.3.0",

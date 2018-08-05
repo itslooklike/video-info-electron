@@ -9,37 +9,23 @@
 </head>
 
 <body>
-  <h1>Video info</h1>
-  <form action="">
-    <div>
-      <label for="">select video </label>
-      <input id="mainFileInput" type="file" accept="video/*" />
-    </div>
-    <button type="submit">get info</button>
-  </form>
+  <h1>My Todos</h1>
 
-  <div id="answer"></div>
+  <ul id="answer"></ul>
 
   <script>
     const electron = require('electron');
     const { ipcRenderer } = electron;
+    const container = document.querySelector('#answer');
 
-    document.querySelector('form').addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      const files = document.querySelector('#mainFileInput').files;
-
-      if (files && files.length > 0) {
-        const { path } = files[0];
-
-        ipcRenderer.send('video:submit', path);
-      } else {
-        console.log('no file selected');
-      }
+    ipcRenderer.on('submit:todoValue', (evt, data) => {
+      const li = document.createElement('li');
+      li.innerHTML = data;
+      container.appendChild(li);
     })
 
-    ipcRenderer.on('video:duration', (evt, data) => {
-      const result = `<h1>${data}</h1>`;
-      document.querySelector('#answer').innerHTML = result;
+    ipcRenderer.on('clear:todoList', () => {
+      container.innerHTML = '';
     })
   </script>
 </body>
