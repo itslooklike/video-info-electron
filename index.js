@@ -1,21 +1,23 @@
 const path = require('path');
 const electron = require('electron');
 const CustomTray = require('./src/custom-tray');
-const { app, BrowserWindow } = electron;
+const MainWindow = require('./src/main-window');
+const { app, ipcMain } = electron;
 
 let mainWindow;
+let tray;
 
 app.on('ready', () => {
-  mainWindow = new BrowserWindow({
-    width: 100,
-    height: 200,
-    frame: false,
-    resizable: false,
-    show: false,
-  });
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
-  mainWindow.on('closed', () => app.quit());
-
+  app.dock.hide();
+  mainWindow = new MainWindow();
   const iconPath = path.join(__dirname, './src/assets/tray-icon.png');
-  new CustomTray(iconPath, mainWindow);
+
+  // тут можно не сохранять в переменную, НО тогда ее вычистит GC
+  tray = new CustomTray(iconPath, mainWindow);
 });
+
+ipcMain.on('timer:tick', (evt, data) => {
+  tray.setTitle(data.toString());
+});
+
+ipcMain.on('timer:end', () => tray.setTitle(''));
