@@ -1,15 +1,11 @@
-# Electron test: video file info
+### Getting started
 
-Need install 'ffmpeg' globaly:
+`npm install`
 
-check:
+Start dev server:
 
-```bash
-which ffmpeg
-```
+`npm start`
 
-install:
+In a new terminal window:
 
-```bash
-brew install ffmpeg
-```
+`npm run electron`
