@@ -7,11 +7,7 @@ import { ipcRenderer as ipc } from 'electron';
 
 class App extends Component {
   render() {
-    return (
-      <div className="app">
-        {this.props.children}
-      </div>
-    );
+    return <div className="app">{this.props.children}</div>;
   }
 }
 

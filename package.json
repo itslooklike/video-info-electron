@@ -1,21 +1,20 @@
 {
-  "name": "timer",
+  "name": "converter",
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
     "start": "webpack-dev-server",
     "e": "electron ."
   },
-  "devDependencies": {
-    "electron": "~1.6.2"
-  },
+  "devDependencies": {},
   "dependencies": {
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-1": "^6.22.0",
-    "fluent-ffmpeg": "^2.1.0",
+    "electron": "^2.0.7",
+    "fluent-ffmpeg": "^2.1.2",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "moment-duration-format": "^1.3.0",
@@ -26,6 +25,7 @@
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
     "redux": "^3.6.0",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"

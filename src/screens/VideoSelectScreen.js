@@ -6,8 +6,8 @@ import * as actions from '../actions';
 
 class VideoSelectScreen extends Component {
   state = {
-    hovering: false
-  }
+    hovering: false,
+  };
 
   onDrop = (files) => {
     // invalid file types are not added to files object
@@ -17,27 +17,28 @@ class VideoSelectScreen extends Component {
 
     if (videos.length) {
       this.props.addVideos(videos);
-      
+
       if (!this.props.small) {
         this.props.history.push('/convert');
       }
     }
-
-  }
+  };
 
   renderChildren({ isDragActive, isDragReject }) {
     if (isDragActive) {
       return <h4 className="drop-message">Omnomnom, let me have those videos!</h4>;
     } else if (isDragReject) {
-      return <h4 className="drop-message">Uh oh, I don't know how to deal with that type of file!</h4>;
+      return (
+        <h4 className="drop-message">Uh oh, I don't know how to deal with that type of file!</h4>
+      );
     } else {
-      return <h4 className="drop-message">Drag and drop some files on me, or click to select.</h4>
+      return <h4 className="drop-message">Drag and drop some files on me, or click to select.</h4>;
     }
   }
 
   render() {
     return (
-      <div className={this.props.small ? "video-select-screen-small" : "video-select-screen"}>
+      <div className={this.props.small ? 'video-select-screen-small' : 'video-select-screen'}>
         <Dropzone
           onDrop={this.onDrop}
           multiple
@@ -53,4 +54,7 @@ class VideoSelectScreen extends Component {
   }
 }
 
-export default connect(null, actions)(VideoSelectScreen);
+export default connect(
+  null,
+  actions
+)(VideoSelectScreen);
